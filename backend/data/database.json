@@ -1,20 +1,6 @@
 {
-  "boards": [
-    {
-      "name": "newly created board",
-      "user": 1,
-      "starred": false,
-      "created": "2024-07-25",
-      "id": 1
-    }
-  ],
+  "boards": [],
   "cards": [],
   "lists": [],
-  "users": [
-    {
-      "email": "tarek@i2gether.com",
-      "password": "$2a$10$kyWzEQ9ZyCVYxHD9GTzXK.VSK0EjmMGcY704ono178t2bem0Meezu",
-      "id": 1
-    }
-  ]
+  "users": []
 }

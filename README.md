@@ -1,37 +1,29 @@
-## Transmedia QA Recruitment Technical Test
+# Installation and Usage
 
-**Notes:**
+To install and run the QA Automation Home Assignment, please follow the steps below:
 
-- You are free to use any popular UI test framework/tool(i.e. Selenium,Cypress)
-- You are free to use any popular API test framework/tool(i.e. Postman,Jest)
-- After complete, please upload the code in a Github repository(Please keep the repository public) and submit this [Google Form](https://forms.gle/bZEhAzZTxKpqNGPZ8)
+1. Clone the repository to your local machine:
+  ```
+  git clone https://github.com/your-username/qa-automation-home-assignment.git
+  ```
 
-## Pre-requisite
+2. Navigate to the project directory:
+  ```
+  cd qa-automation-home-assignment
+  ```
 
-Install the app, simply clone this project and
+3. Install the required dependencies:
+  ```
+  npm install
+  ```
 
-1. `npm install`
-2. `npm start`
+4. Run the tests:
+  ```
+  npm run test
+  ```
 
-## Tasks
+6. Customize and extend the tests:
+  - The test scripts are located in the `cypress\e2e` directory.
+  - api automation script are located in the `api automation` directory.
 
-**UI Automation**
-
-```
-1. Input a Board name, press enter. Verify Board created successfully.
-2. Add two lists and verify two lists created successfully.
-3. Delete a list.
-```
-
-**API Automation**
-
-```
-1. Add a new list
-2. Delete the newly created list
-```
-
-**Evaluation Criteria:**
-
-- Project Structure(30%)
-- Best practises and clean code(40%)
-- Workable code(30%)
+That's it! You have successfully installed and executed the QA Automation Home Assignment.
