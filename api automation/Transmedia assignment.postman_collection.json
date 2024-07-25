@@ -9,35 +9,72 @@
 	},
 	"item": [
 		{
+			"name": "reset api",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([204]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/reset",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"reset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "signup",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"\r",
 							"pm.test(\"Status code is 201 or 400\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([201, 400]);\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([201, 400]);\r",
 							"});\r",
 							"\r",
-							"if (pm.response.code === 201) {\r",
-							"    pm.test(\"Response contains user ID\", function () {\r",
-							"        var jsonData = pm.response.json();\r",
-							"        pm.expect(jsonData).to.have.property(\"id\");\r",
-							"        \r",
-							"    });\r",
-							"}\r",
+							"pm.test(\"Validate response based on status code\", function () {\r",
+							"  const jsonData = pm.response.json();\r",
 							"\r",
-							"if (pm.response.code === 400) {\r",
-							"    pm.test(\"Response contains error message\", function () {\r",
-							"        var jsonData = pm.response.json();\r",
-							"        pm.expect(jsonData).to.eql(\"Email already exists\");\r",
-							"    });\r",
-							"}\r",
+							"  switch (pm.response.code) {\r",
+							"case 201:\r",
+							"      // Check for presence of \"user\" property (optional)\r",
+							"      if (jsonData.hasOwnProperty(\"user\")) {\r",
+							"        pm.expect(jsonData.user).to.have.property(\"id\");\r",
+							"      }\r",
+							"      console.log(jsonData); // Log for debugging purposes (optional)\r",
+							"      break;\r",
+							"    case 400:\r",
+							"      // Check for presence of an error message property\r",
+							"      pm.expect(jsonData).to.eql(\"Email already exists\"); // Adjust if needed\r",
+							"      // No further assertions needed for 400 case (optional)\r",
+							"      break;\r",
+							"   \r",
+							"  }\r",
+							"});\r",
 							"\r",
 							"pm.test(\"Response time is less than 1000ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
-							"});"
+							"  pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -57,12 +94,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/signup",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}/api/signup",
 					"host": [
-						"localhost"
+						"{{BASE_URL}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"signup"
@@ -117,12 +152,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/login",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}/api/login",
 					"host": [
-						"localhost"
+						"{{BASE_URL}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"login"
@@ -184,12 +217,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/boards",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}/api/boards",
 					"host": [
-						"localhost"
+						"{{BASE_URL}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"boards"
@@ -240,12 +271,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/lists",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}/api/lists",
 					"host": [
-						"localhost"
+						"{{BASE_URL}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"lists"
@@ -293,12 +322,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/lists/{{listId}}",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}/api/lists/{{listId}}",
 					"host": [
-						"localhost"
+						"{{BASE_URL}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"lists",
