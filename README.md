@@ -26,4 +26,3 @@ To install and run the QA Automation Home Assignment, please follow the steps be
   - The test scripts are located in the `cypress\e2e` directory.
   - api automation script are located in the `api automation` directory.
 
-That's it! You have successfully installed and executed the QA Automation Home Assignment.
